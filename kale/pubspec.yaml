@@ -39,6 +39,7 @@ dependencies:
   hexcolor: ^3.0.1
   google_fonts: ^4.0.3
   vertical_picker: ^0.0.1
+  google_nav_bar: ^5.0.6
 
 dev_dependencies:
   flutter_test:
