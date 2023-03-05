@@ -3,14 +3,14 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/ticker_provider.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class LoginBodyScreen extends StatefulWidget {
+  const LoginBodyScreen({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<LoginBodyScreen> createState() => _LoginBodyScreenState();
 }
 
-class _LoginPageState extends State<LoginPage>
+class _LoginBodyScreenState extends State<LoginBodyScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 

@@ -92,11 +92,21 @@ class _LoadingScreenState extends State<LoadingScreen> {
                             SizedBox(height: 45),
                             WideDarkBackgroundButton(
                               displayText: 'Login', 
-                              onTap: () {}),
+                              onTap: () => Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const LoginBodyScreen(),
+                                            ),),),
                             SizedBox(height: 40),
                             WideDarkBackgroundButton(
                               displayText: 'Register', 
-                              onTap: () {}
+                              onTap: () => Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const SignUpPage(),
+                                            ),)
                               )
                             
 
