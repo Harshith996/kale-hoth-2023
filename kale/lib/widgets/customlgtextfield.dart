@@ -41,7 +41,8 @@ class MyLGTextField extends StatelessWidget {
                 filled: true,
                 hintText: hintText,
                 hintStyle: const TextStyle(color: Colors.grey,
-                height:3.5))),
+                height:3.5))
+              ),
           ),
     );
   }
