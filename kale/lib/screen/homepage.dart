@@ -182,9 +182,16 @@ class _HomeState extends State<Home> {
           backgroundColor: HexColor("#8cc092"),
           color: HexColor("#064635"),
           animationDuration: const Duration(milliseconds: 250),
+          onTap: (index) {
+            Pcontroller.animateToPage(index,
+                duration: const Duration(milliseconds: 200),
+                curve: Curves.easeIn);
+          },
           items: [
             Icon(Icons.home, color: Colors.white),
             Icon(Icons.public, color: Colors.white),
             Icon(Icons.person, color: Colors.white)
-          ]),);}
+          ]),
+    );
+  }
 }
