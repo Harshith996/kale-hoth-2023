@@ -1,0 +1,42 @@
+[04-Mar-2023 14:09:58 America/Los_Angeles] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'harshith_hothuser'@'localhost' to database 'harshith_hoth' in /home/harshith/public_html/includes/DbConnect.php:12
+Stack trace:
+#0 /home/harshith/public_html/includes/DbConnect.php(12): mysqli->__construct('localhost', 'harshith_hothus...', 'dCE0%WpV4kCB', 'harshith_hoth')
+#1 /home/harshith/public_html/includes/DbOperation.php(11): DbConnect->connect()
+#2 /home/harshith/public_html/apis/user_operations/updateProfile.php(15): DbOperation->__construct()
+#3 {main}
+  thrown in /home/harshith/public_html/includes/DbConnect.php on line 12
+[04-Mar-2023 14:11:48 America/Los_Angeles] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'harshith_hothuser'@'localhost' to database 'harshith_hoth' in /home/harshith/public_html/includes/DbConnect.php:12
+Stack trace:
+#0 /home/harshith/public_html/includes/DbConnect.php(12): mysqli->__construct('localhost', 'harshith_hothus...', 'dCE0%WpV4kCB', 'harshith_hoth')
+#1 /home/harshith/public_html/includes/DbOperation.php(11): DbConnect->connect()
+#2 /home/harshith/public_html/apis/user_operations/updateProfile.php(15): DbOperation->__construct()
+#3 {main}
+  thrown in /home/harshith/public_html/includes/DbConnect.php on line 12
+[04-Mar-2023 14:12:34 America/Los_Angeles] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'harshith_hothuser'@'localhost' to database 'harshith_hoth' in /home/harshith/public_html/includes/DbConnect.php:12
+Stack trace:
+#0 /home/harshith/public_html/includes/DbConnect.php(12): mysqli->__construct('localhost', 'harshith_hothus...', 'dCE0%WpV4kCB', 'harshith_hoth')
+#1 /home/harshith/public_html/includes/DbOperation.php(11): DbConnect->connect()
+#2 /home/harshith/public_html/apis/user_operations/updateProfile.php(15): DbOperation->__construct()
+#3 {main}
+  thrown in /home/harshith/public_html/includes/DbConnect.php on line 12
+[04-Mar-2023 14:13:28 America/Los_Angeles] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'harshith_hothuser'@'localhost' to database 'harshith_hoth' in /home/harshith/public_html/includes/DbConnect.php:12
+Stack trace:
+#0 /home/harshith/public_html/includes/DbConnect.php(12): mysqli->__construct('localhost', 'harshith_hothus...', 'dCE0%WpV4kCB', 'harshith_hoth')
+#1 /home/harshith/public_html/includes/DbOperation.php(11): DbConnect->connect()
+#2 /home/harshith/public_html/apis/user_operations/updateProfile.php(15): DbOperation->__construct()
+#3 {main}
+  thrown in /home/harshith/public_html/includes/DbConnect.php on line 12
+[04-Mar-2023 14:17:00 America/Los_Angeles] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'harshith_hothuser'@'localhost' to database 'harshith_hoth' in /home/harshith/public_html/includes/DbConnect.php:12
+Stack trace:
+#0 /home/harshith/public_html/includes/DbConnect.php(12): mysqli->__construct('localhost', 'harshith_hothus...', 'dCE0%WpV4kCB', 'harshith_hoth')
+#1 /home/harshith/public_html/includes/DbOperation.php(11): DbConnect->connect()
+#2 /home/harshith/public_html/apis/user_operations/userSignup.php(14): DbOperation->__construct()
+#3 {main}
+  thrown in /home/harshith/public_html/includes/DbConnect.php on line 12
+[04-Mar-2023 14:17:27 America/Los_Angeles] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'harshith_hothuser'@'localhost' to database 'harshith_hoth' in /home/harshith/public_html/includes/DbConnect.php:12
+Stack trace:
+#0 /home/harshith/public_html/includes/DbConnect.php(12): mysqli->__construct('localhost', 'harshith_hothus...', 'dCE0%WpV4kCB', 'harshith_hoth')
+#1 /home/harshith/public_html/includes/DbOperation.php(11): DbConnect->connect()
+#2 /home/harshith/public_html/apis/user_operations/userSignup.php(17): DbOperation->__construct()
+#3 {main}
+  thrown in /home/harshith/public_html/includes/DbConnect.php on line 12

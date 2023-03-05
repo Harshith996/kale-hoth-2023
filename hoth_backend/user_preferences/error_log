@@ -1,0 +1,10 @@
+[04-Mar-2023 16:06:27 America/Los_Angeles] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function DbOperation::create_user(), 1 passed in /home/harshith/public_html/apis/user_preferences/getPreferences.php on line 13 and exactly 4 expected in /home/harshith/public_html/includes/DbOperation.php:27
+Stack trace:
+#0 /home/harshith/public_html/apis/user_preferences/getPreferences.php(13): DbOperation->create_user('1')
+#1 {main}
+  thrown in /home/harshith/public_html/includes/DbOperation.php on line 27
+[04-Mar-2023 16:06:42 America/Los_Angeles] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function DbOperation::create_user(), 1 passed in /home/harshith/public_html/apis/user_preferences/getPreferences.php on line 15 and exactly 4 expected in /home/harshith/public_html/includes/DbOperation.php:27
+Stack trace:
+#0 /home/harshith/public_html/apis/user_preferences/getPreferences.php(15): DbOperation->create_user('1')
+#1 {main}
+  thrown in /home/harshith/public_html/includes/DbOperation.php on line 27
