@@ -7,8 +7,6 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:kale/widgets/meal_rec.dart';
 import 'package:kale/widgets/navbar.dart';
 import 'package:intl/intl.dart';
-import 'package:kale/widgets/new_meal_rec.dart';
-
 import '../utils/models.dart';
 
 var dt = DateTime.now();
@@ -188,7 +186,5 @@ class _HomeState extends State<Home> {
             Icon(Icons.home, color: Colors.white),
             Icon(Icons.public, color: Colors.white),
             Icon(Icons.person, color: Colors.white)
-          ]),
-    );
-  }
+          ]),);}
 }
