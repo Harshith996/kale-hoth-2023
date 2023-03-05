@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   hexcolor: ^3.0.1
   google_fonts: ^4.0.3
+  vertical_picker: ^0.0.1
 
 dev_dependencies:
   flutter_test:

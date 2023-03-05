@@ -287,6 +287,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.2"
+  vertical_picker:
+    dependency: "direct main"
+    description:
+      name: vertical_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.1"
   win32:
     dependency: transitive
     description:
