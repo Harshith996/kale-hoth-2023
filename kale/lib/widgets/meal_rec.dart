@@ -14,7 +14,7 @@ class MealRec extends StatefulWidget {
 }
 
 class _MealRecState extends State<MealRec> {
-  double boxHeight = 100;
+  double boxHeight = 75;
   bool opened = false;
   double angle = 0;
 
@@ -23,11 +23,12 @@ class _MealRecState extends State<MealRec> {
       if (opened) {
         opened = false;
         angle = 0;
-        boxHeight = 100;
+        boxHeight = 75;
       } else {
         opened = true;
         angle = math.pi / 2;
         boxHeight = 250;
+
       }
     });
   }
@@ -38,12 +39,24 @@ class _MealRecState extends State<MealRec> {
         onTap: _expandBox,
         child: SizedBox(
           height: boxHeight,
-          width: 335,
+          width: 300,
           child: DecoratedBox(
-              decoration: BoxDecoration(color: HexColor('0D9A75')),
-              child: Text(widget.displayText,
-                  style:
-                      GoogleFonts.poppins(fontSize: 20, color: Colors.white))),
+              decoration: BoxDecoration(
+                color: HexColor('064635'),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  topRight: Radius.circular(30),
+                  bottomLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(30))),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(10, 30, 0, 0),
+                child: Text(widget.displayText,
+                    style: GoogleFonts.poppins
+                    (
+                      fontSize: 20, 
+                      color: Colors.white
+                    )),
+              )),
         ));
   }
 }
