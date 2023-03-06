@@ -5,6 +5,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:kale/screen/homepage.dart';
 import 'package:kale/screen/signuppage.dart';
 import 'package:kale/utils/apis.dart';
+import 'package:kale/utils/shared_prefs.dart';
 import 'package:kale/widgets/custombutton.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -198,6 +199,7 @@ class _LoginBodyScreenState extends State<LoginBodyScreen> {
     if (responseJSON['error'] == false) {
       print("Sweet");
       // ignore: use_build_context_synchronously
+      SharedPrefs().id = responseJSON['user_id'];
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
