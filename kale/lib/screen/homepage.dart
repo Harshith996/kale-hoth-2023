@@ -4,10 +4,14 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:kale/utils/shared_prefs.dart';
 import 'package:kale/widgets/meal_rec.dart';
 import 'package:kale/widgets/navbar.dart';
 import 'package:intl/intl.dart';
+import '../utils/apis.dart';
 import '../utils/models.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 var dt = DateTime.now();
 
@@ -30,6 +34,7 @@ List<Meal> meals = <Meal>[
   Meal(id: 2, name: "Sandwich", health_index: 2, carbon_index: 1),
   Meal(id: 3, name: "Pork", health_index: 0, carbon_index: -1),
 ];
+String d1 = "", d2 = "", d3 = "", d4 = "", d5 = "", dh = "";
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -42,6 +47,14 @@ class _HomeState extends State<Home> {
   final PageController Pcontroller = PageController();
   int activeIndex = 0;
   bool isOnHome = true;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getRecs(SharedPrefs().id).whenComplete(() => null);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -161,36 +174,39 @@ class _HomeState extends State<Home> {
                 ),
                 const SizedBox(height: 20),
                 Column(
-                  children: const [
+                  children: [
                     MealRec(
                       displayText: "Breakfast",
-                      dish_one: "Dish 1",
+                      dish_one: "",
                       dish_two: "Dish 2",
                       dish_three: "Dish 3",
                       dish_four: "Dish 4",
                       dish_five: "Dish 5",
+                      diningHall: "Epicuria",
                     ),
                     SizedBox(
                       height: 30,
                     ),
                     MealRec(
                       displayText: "Lunch",
-                      dish_one: "Dish 1",
+                      dish_one: "",
                       dish_two: "Dish 2",
                       dish_three: "Dish 3",
                       dish_four: "Dish 4",
                       dish_five: "Dish 5",
+                      diningHall: "Epicuria",
                     ),
                     SizedBox(
                       height: 30,
                     ),
                     MealRec(
                       displayText: "Dinner",
-                      dish_one: "Dish 1",
-                      dish_two: "Dish 2",
-                      dish_three: "Dish 3",
-                      dish_four: "Dish 4",
-                      dish_five: "Dish 5",
+                      dish_one: d1,
+                      dish_two: d2,
+                      dish_three: d3,
+                      dish_four: d4,
+                      dish_five: d5,
+                      diningHall: dh,
                     )
                   ],
                 )
@@ -268,5 +284,37 @@ class _HomeState extends State<Home> {
             Icon(Icons.public, color: Colors.white),
           ]),
     );
+  }
+
+  Future getRecs(int user_id) async {
+    final headers = {
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded"
+    };
+    final form = [];
+    form.add("user_id=$user_id");
+    final body = form.join('&');
+
+    final response = await http.post(Uri.parse(APIs.url_get_user_preference),
+        headers: headers, body: body);
+    final responseJSON = json.decode(response.body);
+    if (responseJSON['error'] == false) {
+      // SharedPrefs().id = responseJSON['user_id'];
+      // SharedPrefs().phone_number = responseJSON['phone_number'];
+      // SharedPrefs().first_name = responseJSON['first_name'];
+      // SharedPrefs().last_name = responseJSON['last_name'];
+      // SharedPrefs().gender = responseJSON['gender'];
+      // ignore: use_build_context_synchronously
+      String diningHall = responseJSON['dinner_dining_hall'];
+      setState(() {
+        dh = diningHall;
+        d1 = responseJSON['dish_1'];
+        d2 = responseJSON['dish_2'];
+        d3 = responseJSON['dish_3'];
+        d4 = responseJSON['dish_4'];
+        d5 = responseJSON['dish_5'];
+      });
+      print("Sweet");
+    }
   }
 }
