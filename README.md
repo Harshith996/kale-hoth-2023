@@ -1,6 +1,6 @@
 # kale-hoth-2023
 
-Kale: Your S
+Kale: Your UCLA Sustainability and Health companion
 
 # How to run the application
 
