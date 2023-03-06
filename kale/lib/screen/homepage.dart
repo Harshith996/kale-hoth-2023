@@ -12,6 +12,7 @@ import '../utils/apis.dart';
 import '../utils/models.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:url_launcher/url_launcher.dart';
 
 var dt = DateTime.now();
 
@@ -218,44 +219,7 @@ class _HomeState extends State<Home> {
               children: [
                 const SizedBox(height: 60),
                 SingleChildScrollView(
-                  child: Column(children: [
-                    SizedBox(
-                        height: 20,
-                        child: DecoratedBox(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15)),
-                        )),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          height: 20,
-                          child: DecoratedBox(
-                              decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(9),
-                          )),
-                        ),
-                        const SizedBox(width: 10),
-                        SizedBox(
-                            height: 20,
-                            child: DecoratedBox(
-                                decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(9),
-                            )))
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    SizedBox(
-                        height: 20,
-                        child: DecoratedBox(
-                            decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(9),
-                        )))
-                  ]),
+                  child: Column(children: []),
                 )
               ],
             ),
@@ -281,7 +245,6 @@ class _HomeState extends State<Home> {
           },
           items: const [
             Icon(Icons.home, color: Colors.white),
-            Icon(Icons.public, color: Colors.white),
           ]),
     );
   }
