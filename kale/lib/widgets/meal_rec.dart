@@ -14,7 +14,7 @@ class MealRec extends StatefulWidget {
   final String dish_three;
   final String dish_four;
   final String dish_five;
-  
+
   @override
   State<MealRec> createState() => _MealRecState();
 }
@@ -33,8 +33,7 @@ class _MealRecState extends State<MealRec> {
       } else {
         opened = true;
         angle = math.pi / 2;
-        boxHeight = 250;
-
+        boxHeight = 250;          
       }
     });
   }
@@ -49,7 +48,7 @@ class _MealRecState extends State<MealRec> {
           child: DecoratedBox(
               decoration: BoxDecoration(
                 color: HexColor('064635'),
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(10),
                   topRight: Radius.circular(30),
                   bottomLeft: Radius.circular(10),

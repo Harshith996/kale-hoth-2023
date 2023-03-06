@@ -54,14 +54,14 @@ class _HomeState extends State<Home> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(height: 60),
+                const SizedBox(height: 60),
                 SizedBox(
                     width: 335,
                     height: 100,
                     child: DecoratedBox(
                         decoration: BoxDecoration(
                             color: HexColor('064635'),
-                            borderRadius: BorderRadius.all(
+                            borderRadius: const BorderRadius.all(
                               Radius.circular(20),
                             )),
                         child: Row(
@@ -89,7 +89,7 @@ class _HomeState extends State<Home> {
                                 )
                               ],
                             ),
-                            SizedBox(width: 30),
+                            const SizedBox(width: 30),
                             SizedBox(
                                 width: 110,
                                 height: 70,
@@ -97,7 +97,7 @@ class _HomeState extends State<Home> {
                                   decoration: BoxDecoration(
                                       color: HexColor("#fcba03"),
                                       borderRadius:
-                                          BorderRadius.all(Radius.circular(20))),
+                                          const BorderRadius.all(Radius.circular(20))),
                                   child: Padding(
                                     padding:
                                         const EdgeInsets.fromLTRB(20, 10, 20, 10),
@@ -150,53 +150,93 @@ class _HomeState extends State<Home> {
                       textAlign: TextAlign.start,),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20
                 ),
                 Column(
-                  mainAxisSize: MainAxisSize.min,
                   children: const [
-                    // MealRec(
-                    //   displayText: "Breakfast",
-                    // ),
-                    // SizedBox(
-                    //   height: 30,
-                    // ),
-                    // MealRec(
-                    //   displayText: "Lunch",
-                    // ),
-                    // SizedBox(
-                    //   height: 30,
-                    // ),
-                    // MealRec(
-                    //   displayText: "Dinner",
-                    // )
+                    MealRec(
+                      displayText: "Breakfast",
+                      dish_one: "Dish 1",
+                      dish_two: "Dish 2",
+                      dish_three: "Dish 3",
+                      dish_four: "Dish 4",
+                      dish_five: "Dish 5",
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    MealRec(
+                      displayText: "Lunch",
+                      dish_one: "Dish 1",
+                      dish_two: "Dish 2",
+                      dish_three: "Dish 3",
+                      dish_four: "Dish 4",
+                      dish_five: "Dish 5",
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    MealRec(
+                      displayText: "Dinner",
+                      dish_one: "Dish 1",
+                      dish_two: "Dish 2",
+                      dish_three: "Dish 3",
+                      dish_four: "Dish 4",
+                      dish_five: "Dish 5",
+                    )
                   ],
                 )
               ],
             ),
           ),
-          Column(
-            children: [
-              SizedBox(height: 60),
-              SingleChildScrollView(
-                child: Column(children: [
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    children: [
-                      SizedBox(),
-                      SizedBox()
-                    ],
-                  ),
-                  SizedBox()
-                ]),
-                )
-            ],
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                const SizedBox(height: 60),
+                SingleChildScrollView(
+                  child: Column(children: [
+                    SizedBox(
+                      height: 20,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15)
+                        ),)
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                          height: 20,
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(9),)),
+                        ),
+                        const SizedBox(width: 10),
+                        SizedBox(
+                          height: 20,
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(9),))
+                        )
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    SizedBox(height: 20,
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(9),)))
+                  ]),
+                  )
+              ],
+            ),
           ),
           Column(children: [
-            SizedBox(height: 60),
+            const SizedBox(height: 60),
             Text(
               "Page 3",
               style: GoogleFonts.poppins(fontSize: 40, color: Colors.black),
@@ -209,7 +249,7 @@ class _HomeState extends State<Home> {
           backgroundColor: HexColor("#8cc092"),
           color: HexColor("#064635"),
           animationDuration: const Duration(milliseconds: 250),
-          items: [
+          items: const [
             Icon(Icons.home, color: Colors.white),
             Icon(Icons.public, color: Colors.white),
             Icon(Icons.person, color: Colors.white)

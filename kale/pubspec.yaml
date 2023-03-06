@@ -43,6 +43,7 @@ dependencies:
   google_nav_bar: ^5.0.6
   intl: ^0.18.0
   curved_navigation_bar: ^1.0.3
+  expandable_text: ^2.3.0
 
 dev_dependencies:
   flutter_test:
