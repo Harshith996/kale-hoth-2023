@@ -37,7 +37,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 else
 {
     $response['error'] = true;
-    $response['message'] = "Invalid Request";
+    $response['message'] = "Invalid Request. Something went wrong!";
 }
 
 echo json_encode($response);
