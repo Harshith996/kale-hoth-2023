@@ -8,7 +8,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     )
     {
         $db = new DbOperation();
-
         $pref = $db->get_user_preferences($_POST['user_id']);
 
         if ($pref["sex"] == 0) {
@@ -30,7 +29,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         $result1 = $db->give_recommendations_breakfast($pref['carbon_index'], $pref["calorie_intake"], $pref['gluten'], $pref['vegan'], $pref['dairy']);
         $result2 = $db->give_recommendations_lunch($pref['carbon_index'], $pref["calorie_intake"], $pref['gluten'], $pref['vegan'], $pref['dairy']);
         $result3 = $db->give_recommendations_dinner($pref['carbon_index'], $pref["calorie_intake"], $pref['gluten'], $pref['vegan'], $pref['dairy']);
-
 
         if ($result1 == -1 or $result2 == -1 or $result3 == -1) {
             $response['error'] = true;
@@ -90,7 +88,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 else
 {
     $response['error'] = true;
-    $response['message'] = "Invalid Request";
+    $response['message'] = "Invalid Request! Something went wrong.";
 }
 
 echo json_encode($response);
