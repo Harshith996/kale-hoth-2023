@@ -37,7 +37,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final PageController controller = PageController();
   String? gender = null;
 
-  int chosenHealthIndex = -1;
+  int chosenHealthIndex = -2;
   int chosenSustainabilityPlan = -2;
   int feet = 0;
   int inches = 0;
@@ -343,10 +343,10 @@ class _SignUpPageState extends State<SignUpPage> {
                                   GestureDetector(
                                       onTap: () {
                                         setState(() {
-                                          chosenHealthIndex = 0;
+                                          chosenHealthIndex = -1;
                                         });
                                       },
-                                      child: chosenHealthIndex != 0
+                                      child: chosenHealthIndex != -1
                                           ? SizedBox(
                                               height: 60,
                                               width: 60,
@@ -387,10 +387,10 @@ class _SignUpPageState extends State<SignUpPage> {
                                   GestureDetector(
                                       onTap: () {
                                         setState(() {
-                                          chosenHealthIndex = 1;
+                                          chosenHealthIndex = 0;
                                         });
                                       },
-                                      child: chosenHealthIndex != 1
+                                      child: chosenHealthIndex != 0
                                           ? SizedBox(
                                               height: 60,
                                               width: 60,
@@ -431,10 +431,10 @@ class _SignUpPageState extends State<SignUpPage> {
                                   GestureDetector(
                                       onTap: () {
                                         setState(() {
-                                          chosenHealthIndex = 2;
+                                          chosenHealthIndex = 1;
                                         });
                                       },
-                                      child: chosenHealthIndex != 2
+                                      child: chosenHealthIndex != 1
                                           ? SizedBox(
                                               height: 60,
                                               width: 60,
