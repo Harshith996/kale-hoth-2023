@@ -14,6 +14,7 @@ import 'package:http/http.dart' as http;
 import 'package:vertical_picker/vertical_picker.dart';
 import 'dart:convert';
 
+import '../utils/shared_prefs.dart';
 import '../widgets/custombutton.dart';
 import '../widgets/customlgtextfield.dart';
 
@@ -740,7 +741,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                         int height = (feet * 12) + (inches);
 
                                         recordUserPreferences(
-                                            1,
+                                            SharedPrefs().id,
                                             height,
                                             weightController.text,
                                             selectedGenderIndex,
@@ -784,7 +785,7 @@ class _SignUpPageState extends State<SignUpPage> {
         headers: headers, body: body);
     final responseJSON = json.decode(response.body);
     if (responseJSON['error'] == false) {
-      // SharedPrefs().id = responseJSON['user_id'];
+      SharedPrefs().id = responseJSON['user_id'];
       // SharedPrefs().phone_number = responseJSON['phone_number'];
       // SharedPrefs().first_name = responseJSON['first_name'];
       // SharedPrefs().last_name = responseJSON['last_name'];

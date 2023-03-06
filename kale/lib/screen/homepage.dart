@@ -41,13 +41,17 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final PageController Pcontroller = PageController();
   int activeIndex = 0;
+  bool isOnHome = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: HexColor("#8cc092"),
       body: PageView(
         controller: Pcontroller,
-        onPageChanged: (index) => setState(() => activeIndex = index),
+        onPageChanged: (index) => setState(() {
+          activeIndex = index;
+          isOnHome = !isOnHome;
+        }),
         physics: const NeverScrollableScrollPhysics(),
         children: [
           SingleChildScrollView(
@@ -76,14 +80,16 @@ class _HomeState extends State<Home> {
                                           20, 14, 20, 0),
                                       child: Text('Good Morning, ',
                                           style: GoogleFonts.poppins(
-                                              fontSize: 18, color: Colors.white)),
+                                              fontSize: 18,
+                                              color: Colors.white)),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.fromLTRB(
                                           20, 5, 30, 10),
                                       child: Text('Sidharth ',
                                           style: GoogleFonts.poppins(
-                                              fontSize: 30, color: Colors.white)),
+                                              fontSize: 30,
+                                              color: Colors.white)),
                                     ),
                                   ],
                                 )
@@ -96,11 +102,11 @@ class _HomeState extends State<Home> {
                                 child: DecoratedBox(
                                   decoration: BoxDecoration(
                                       color: HexColor("#fcba03"),
-                                      borderRadius:
-                                          const BorderRadius.all(Radius.circular(20))),
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(20))),
                                   child: Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                                    padding: const EdgeInsets.fromLTRB(
+                                        20, 10, 20, 10),
                                     child: Column(
                                       children: [
                                         Row(
@@ -108,11 +114,13 @@ class _HomeState extends State<Home> {
                                             Text(dt.day.toString(),
                                                 style: GoogleFonts.poppins(
                                                     fontSize: 18,
-                                                    fontWeight: FontWeight.w600)),
+                                                    fontWeight:
+                                                        FontWeight.w600)),
                                             Text(', ',
                                                 style: GoogleFonts.poppins(
                                                     fontSize: 18,
-                                                    fontWeight: FontWeight.w600)),
+                                                    fontWeight:
+                                                        FontWeight.w600)),
                                             Text(
                                               months[dt.month - 1],
                                               style: GoogleFonts.poppins(
@@ -147,12 +155,11 @@ class _HomeState extends State<Home> {
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
-                      textAlign: TextAlign.start,),
+                      textAlign: TextAlign.start,
+                    ),
                   ],
                 ),
-                const SizedBox(
-                  height: 20
-                ),
+                const SizedBox(height: 20),
                 Column(
                   children: const [
                     MealRec(
@@ -197,12 +204,11 @@ class _HomeState extends State<Home> {
                 SingleChildScrollView(
                   child: Column(children: [
                     SizedBox(
-                      height: 20,
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15)
-                        ),)
-                    ),
+                        height: 20,
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15)),
+                        )),
                     const SizedBox(
                       height: 20,
                     ),
@@ -211,27 +217,30 @@ class _HomeState extends State<Home> {
                         SizedBox(
                           height: 20,
                           child: DecoratedBox(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(9),)),
+                              decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(9),
+                          )),
                         ),
                         const SizedBox(width: 10),
                         SizedBox(
-                          height: 20,
-                          child: DecoratedBox(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(9),))
-                        )
+                            height: 20,
+                            child: DecoratedBox(
+                                decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(9),
+                            )))
                       ],
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    SizedBox(height: 20,
-                          child: DecoratedBox(
+                    SizedBox(
+                        height: 20,
+                        child: DecoratedBox(
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(9),)))
+                          borderRadius: BorderRadius.circular(9),
+                        )))
                   ]),
-                  )
+                )
               ],
             ),
           ),
@@ -249,9 +258,15 @@ class _HomeState extends State<Home> {
           backgroundColor: HexColor("#8cc092"),
           color: HexColor("#064635"),
           animationDuration: const Duration(milliseconds: 250),
+          onTap: (index) {
+            Pcontroller.animateToPage(index,
+                duration: const Duration(milliseconds: 200),
+                curve: Curves.easeIn);
+          },
           items: const [
             Icon(Icons.home, color: Colors.white),
             Icon(Icons.public, color: Colors.white),
-            Icon(Icons.person, color: Colors.white)
-          ]),);}
+          ]),
+    );
+  }
 }

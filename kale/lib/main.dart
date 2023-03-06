@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:kale/screen/homepage.dart';
 import 'package:kale/screen/loadingpage.dart';
+import 'package:kale/utils/shared_prefs.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await SharedPrefs().init();
   runApp(const MyApp());
 }
 
