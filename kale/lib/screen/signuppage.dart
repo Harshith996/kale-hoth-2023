@@ -610,7 +610,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                 //     chosenSustainabilityPlan,
                                 //     context);
                                 controller.nextPage(
-          duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
+                                    duration: const Duration(milliseconds: 200),
+                                    curve: Curves.easeIn);
                               },
                             )),
                       ],
@@ -620,129 +621,143 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
             ),
             Container(
-              decoration: BoxDecoration(
-                color: HexColor('8cc092'),
-                borderRadius: const BorderRadius.all(Radius.circular(20)),
-                
-              ),
-              child: Scaffold(
-                backgroundColor: Colors.transparent,
-                body: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(30, 29, 30, 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                decoration: BoxDecoration(
+                  color: HexColor('8cc092'),
+                  borderRadius: const BorderRadius.all(Radius.circular(20)),
+                ),
+                child: Scaffold(
+                    backgroundColor: Colors.transparent,
+                    body: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                            padding: const EdgeInsets.fromLTRB(30, 29, 30, 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    SizedBox(
+                                        height: 60,
+                                        width: 161,
+                                        child: Image.asset(
+                                            'assets/dark_logo_text.png')),
+                                  ],
+                                )
+                              ],
+                            )),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(30, 0, 20, 20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(
-                                height: 60, 
-                                width: 161,
-                                child: Image.asset('assets/dark_logo_text.png')
+                              Text(
+                                'Dietary Restrictions: ',
+                                style: GoogleFonts.poppins(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
                               ),
-                            ],
-                          )
-                        ],
-                      )
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(30, 0, 20 ,20 ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Dietary Restrictions: ',
-                            style: GoogleFonts.poppins(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold
-
-                            ),
-                          ),
-                          SizedBox(height: 3),
-                          Text(
-                            'Tick all the boxes that apply to your diet',
-                            style: GoogleFonts.poppins(
-                              fontSize: 13.4,
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          Column(
-                            children:[
-                              Row(
+                              SizedBox(height: 3),
+                              Text(
+                                'Tick all the boxes that apply to your diet',
+                                style: GoogleFonts.poppins(
+                                  fontSize: 13.4,
+                                ),
+                              ),
+                              SizedBox(height: 5),
+                              Column(
                                 children: [
-                                  Checkbox(
-                                    value: isCheckedGluten,
-                                    activeColor: HexColor('064635'),
-                                    onChanged: (newBool) {  
-                                      setState(() {
-                                        isCheckedGluten= newBool;
-                                        }); 
-                                        }, ), 
-                                        Text(
-                                          'I am allergic to gluten.',
+                                  Row(
+                                    children: [
+                                      Checkbox(
+                                        value: isCheckedGluten,
+                                        activeColor: HexColor('064635'),
+                                        onChanged: (newBool) {
+                                          setState(() {
+                                            isCheckedGluten = newBool;
+                                          });
+                                        },
+                                      ),
+                                      Text('I am allergic to gluten.',
                                           style: GoogleFonts.poppins(
                                             fontSize: 15,
                                           )),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Checkbox(
+                                        value: isCheckedLactose,
+                                        activeColor: HexColor('064635'),
+                                        onChanged: (newBool) {
+                                          setState(() {
+                                            isCheckedLactose = newBool;
+                                          });
+                                        },
+                                      ),
+                                      Text('I am lactose-intolerant.',
+                                          style: GoogleFonts.poppins(
+                                            fontSize: 15,
+                                          )),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Checkbox(
+                                        value: isCheckedVegan,
+                                        activeColor: HexColor('064635'),
+                                        onChanged: (newBool) {
+                                          setState(() {
+                                            isCheckedVegan = newBool;
+                                          });
+                                        },
+                                      ),
+                                      Text('I am a vegan.',
+                                          style: GoogleFonts.poppins(
+                                            fontSize: 15,
+                                          )),
+                                    ],
+                                  ),
+                                  SizedBox(height: 270),
+                                  WideDarkBackgroundButton(
+                                      displayText: 'Get Your Meal Plan',
+                                      onTap: () {
+                                        int vegan;
+                                        int gluten;
+                                        int dairy;
+                                        if (isCheckedVegan == true)
+                                          vegan = 1;
+                                        else
+                                          vegan = 0;
+                                        if (isCheckedGluten == true)
+                                          gluten = 0;
+                                        else
+                                          gluten = 1;
+                                        if (isCheckedLactose == true)
+                                          dairy = 0;
+                                        else
+                                          dairy = 1;
+                                        int height = (feet * 12) + (inches);
+
+                                        recordUserPreferences(
+                                            1,
+                                            height,
+                                            weightController.text,
+                                            selectedGenderIndex,
+                                            chosenHealthIndex,
+                                            chosenSustainabilityPlan,
+                                            vegan,
+                                            gluten,
+                                            dairy,
+                                            context);
+                                      }),
                                 ],
-                              ),
-                              Row(children: [
-                                Checkbox(
-                                    value: isCheckedLactose,
-                                    activeColor: HexColor('064635'),
-                                    onChanged: (newBool) {  
-                                      setState(() {
-                                        isCheckedLactose= newBool;
-                                        }); 
-                                        }, ), 
-                                        Text(
-                                          'I am lactose-intolerant.',
-                                          style: GoogleFonts.poppins(
-                                            fontSize: 15,
-                                          )),
-
-                              ],),
-                              Row(children: [
-                                Checkbox(
-                                    value: isCheckedVegan,
-                                    activeColor: HexColor('064635'),
-                                    onChanged: (newBool) {  
-                                      setState(() {
-                                        isCheckedVegan= newBool;
-                                        }); 
-                                        }, ), 
-                                        Text(
-                                          'I am a vegan.',
-                                          
-                                    style: GoogleFonts.poppins(
-                                            fontSize: 15,
-                                          )),
-
-                              ],),
-
-                            SizedBox(
-                              height: 270
-                            ),
-
-                            WideDarkBackgroundButton(
-                              displayText: 'Get Your Meal Plan', 
-                            onTap: () { 
-
-                            }),
-                        
-
+                              )
                             ],
-                            
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                )
-              )
-              )
+                          ),
+                        ),
+                      ],
+                    )))
           ],
         ));
   }
@@ -784,8 +799,17 @@ class _SignUpPageState extends State<SignUpPage> {
     }
   }
 
-  Future recordUserPreferences(int user_id, int height, String weight, int sex,
-      int health_index, int carbon_index, BuildContext context) async {
+  Future recordUserPreferences(
+      int user_id,
+      int height,
+      String weight,
+      int sex,
+      int health_index,
+      int carbon_index,
+      int vegan,
+      int gluten,
+      int dairy,
+      BuildContext context) async {
     final headers = {
       "Accept": "application/json",
       "Content-Type": "application/x-www-form-urlencoded"
@@ -797,6 +821,9 @@ class _SignUpPageState extends State<SignUpPage> {
     form.add("sex=$sex");
     form.add("health_index=$health_index");
     form.add("carbon_index=$carbon_index");
+    form.add("vegan=$vegan");
+    form.add("gluten=$gluten");
+    form.add("dairy=$dairy");
     final body = form.join('&');
 
     final response = await http.post(Uri.parse(APIs.url_record_user_preference),
