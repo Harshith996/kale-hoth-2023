@@ -87,11 +87,11 @@
 
         /////////////////////////////////////////////////
         // User Preferences
-        public function record_preferences($user_id, $height, $weight, $sex, $health_index, $carbon_index)
+        public function record_preferences($user_id, $height, $weight, $sex, $health_index, $carbon_index, $vegan, $gluten, $dairy)
         {
-            $query = "INSERT INTO `user_preferences`(`preference_id`, `user_id`, `height`, `weight`, `sex`, `health_index`, `carbon_index`) VALUES (NULL, ?, ?, ?, ?, ?, ?)";
+            $query = "INSERT INTO `user_preferences`(`preference_id`, `user_id`, `height`, `weight`, `sex`, `health_index`, `carbon_index`, `vegan`, `gluten`, `dairy`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $this->con->prepare($query);
-            $stmt->bind_param("ssssss", $user_id, $height, $weight, $sex, $health_index, $carbon_index);
+            $stmt->bind_param("sssssssss", $user_id, $height, $weight, $sex, $health_index, $carbon_index, $vegan, $gluten, $dairy);
             if($stmt->execute()){
                 return 0;
             }
@@ -108,6 +108,7 @@
             $stmt->execute();
             return $stmt->get_result()->fetch_assoc();
         }
+
         public function give_recommendations_breakfast($carbon_index, $calorie_intake, $gluten, $vegan, $dairy)
         {
             $up = $calorie_intake + 25;

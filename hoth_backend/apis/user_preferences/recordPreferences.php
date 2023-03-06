@@ -1,7 +1,7 @@
 <?php
-    // ini_set('display_errors', 1);
-    // ini_set('display_startup_errors', 1);
-    // error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
     require_once '../../includes/DbOperation.php';
     $response = array();
     if($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -13,11 +13,14 @@
             and isset($_POST['sex'])
             and isset($_POST['health_index'])
             and isset($_POST['carbon_index'])
+            and isset($_POST['vegan'])
+            and isset($_POST['gluten'])
+            and isset($_POST['dairy'])
         )
         {
             $db = new DbOperation();
 
-            $result = $db->record_preferences($_POST['user_id'], $_POST['height'], $_POST['weight'], $_POST['sex'], $_POST['health_index'], $_POST['carbon_index']);
+            $result = $db->record_preferences($_POST['user_id'], $_POST['height'], $_POST['weight'], $_POST['sex'], $_POST['health_index'], $_POST['carbon_index'], $_POST['vegan'], $_POST['gluten'], $_POST['dairy']);
 
             if($result == -1)
             {
