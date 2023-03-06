@@ -6,9 +6,15 @@ import 'package:hexcolor/hexcolor.dart';
 import 'dart:math' as math;
 
 class MealRec extends StatefulWidget {
-  const MealRec({super.key, required this.displayText});
+  const MealRec({super.key, required this.displayText, required this.dish_one, required this.dish_two, 
+                required this.dish_three, required this.dish_four, required this.dish_five});
   final String displayText;
-
+  final String dish_one;
+  final String dish_two;
+  final String dish_three;
+  final String dish_four;
+  final String dish_five;
+  
   @override
   State<MealRec> createState() => _MealRecState();
 }

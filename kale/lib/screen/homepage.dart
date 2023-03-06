@@ -156,21 +156,21 @@ class _HomeState extends State<Home> {
                 Column(
                   mainAxisSize: MainAxisSize.min,
                   children: const [
-                    MealRec(
-                      displayText: "Breakfast",
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    MealRec(
-                      displayText: "Lunch",
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    MealRec(
-                      displayText: "Dinner",
-                    )
+                    // MealRec(
+                    //   displayText: "Breakfast",
+                    // ),
+                    // SizedBox(
+                    //   height: 30,
+                    // ),
+                    // MealRec(
+                    //   displayText: "Lunch",
+                    // ),
+                    // SizedBox(
+                    //   height: 30,
+                    // ),
+                    // MealRec(
+                    //   displayText: "Dinner",
+                    // )
                   ],
                 )
               ],
@@ -179,10 +179,20 @@ class _HomeState extends State<Home> {
           Column(
             children: [
               SizedBox(height: 60),
-              Text(
-                "Page 2",
-                style: GoogleFonts.poppins(fontSize: 40, color: Colors.black),
-              )
+              SingleChildScrollView(
+                child: Column(children: [
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    children: [
+                      SizedBox(),
+                      SizedBox()
+                    ],
+                  ),
+                  SizedBox()
+                ]),
+                )
             ],
           ),
           Column(children: [
