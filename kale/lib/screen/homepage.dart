@@ -50,126 +50,193 @@ class _HomeState extends State<Home> {
         onPageChanged: (index) => setState(() => activeIndex = index),
         physics: const NeverScrollableScrollPhysics(),
         children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(height: 60),
-              SizedBox(
-                  width: 335,
-                  height: 100,
-                  child: DecoratedBox(
-                      decoration: BoxDecoration(
-                          color: HexColor('064635'),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
-                          )),
-                      child: Row(
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Column(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.fromLTRB(
-                                        20, 14, 20, 0),
-                                    child: Text('Good Morning, ',
-                                        style: GoogleFonts.poppins(
-                                            fontSize: 18, color: Colors.white)),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.fromLTRB(
-                                        20, 5, 30, 10),
-                                    child: Text('Sidharth ',
-                                        style: GoogleFonts.poppins(
-                                            fontSize: 30, color: Colors.white)),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                          SizedBox(width: 30),
-                          SizedBox(
-                              width: 110,
-                              height: 70,
-                              child: DecoratedBox(
-                                decoration: BoxDecoration(
-                                    color: HexColor("#fcba03"),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(20))),
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(20, 10, 20, 10),
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Text(dt.day.toString(),
+          SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const SizedBox(height: 60),
+                SizedBox(
+                    width: 335,
+                    height: 100,
+                    child: DecoratedBox(
+                        decoration: BoxDecoration(
+                            color: HexColor('064635'),
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(20),
+                            )),
+                        child: Row(
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          20, 14, 20, 0),
+                                      child: Text('Good Morning, ',
+                                          style: GoogleFonts.poppins(
+                                              fontSize: 18, color: Colors.white)),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          20, 5, 30, 10),
+                                      child: Text('Sidharth ',
+                                          style: GoogleFonts.poppins(
+                                              fontSize: 30, color: Colors.white)),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                            const SizedBox(width: 30),
+                            SizedBox(
+                                width: 110,
+                                height: 70,
+                                child: DecoratedBox(
+                                  decoration: BoxDecoration(
+                                      color: HexColor("#fcba03"),
+                                      borderRadius:
+                                          const BorderRadius.all(Radius.circular(20))),
+                                  child: Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                                    child: Column(
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Text(dt.day.toString(),
+                                                style: GoogleFonts.poppins(
+                                                    fontSize: 18,
+                                                    fontWeight: FontWeight.w600)),
+                                            Text(', ',
+                                                style: GoogleFonts.poppins(
+                                                    fontSize: 18,
+                                                    fontWeight: FontWeight.w600)),
+                                            Text(
+                                              months[dt.month - 1],
                                               style: GoogleFonts.poppins(
                                                   fontSize: 18,
-                                                  fontWeight: FontWeight.w600)),
-                                          Text(', ',
+                                                  fontWeight: FontWeight.w600),
+                                            )
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              DateFormat('EEEE').format(dt),
                                               style: GoogleFonts.poppins(
                                                   fontSize: 18,
-                                                  fontWeight: FontWeight.w600)),
-                                          Text(
-                                            months[dt.month - 1],
-                                            style: GoogleFonts.poppins(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.w600),
-                                          )
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            DateFormat('EEEE').format(dt),
-                                            style: GoogleFonts.poppins(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                        ],
-                                      )
-                                    ],
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ))
-                        ],
-                      ))),
-              const SizedBox(height: 60),
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                children: const [
-                  MealRec(
-                    displayText: "Breakfast",
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  MealRec(
-                    displayText: "Lunch",
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  MealRec(
-                    displayText: "Dinner",
-                  )
-                ],
-              )
-            ],
+                                ))
+                          ],
+                        ))),
+                const SizedBox(height: 30),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Select your meal: ',
+                      style: GoogleFonts.poppins(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.start,),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20
+                ),
+                Column(
+                  children: const [
+                    MealRec(
+                      displayText: "Breakfast",
+                      dish_one: "Dish 1",
+                      dish_two: "Dish 2",
+                      dish_three: "Dish 3",
+                      dish_four: "Dish 4",
+                      dish_five: "Dish 5",
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    MealRec(
+                      displayText: "Lunch",
+                      dish_one: "Dish 1",
+                      dish_two: "Dish 2",
+                      dish_three: "Dish 3",
+                      dish_four: "Dish 4",
+                      dish_five: "Dish 5",
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    MealRec(
+                      displayText: "Dinner",
+                      dish_one: "Dish 1",
+                      dish_two: "Dish 2",
+                      dish_three: "Dish 3",
+                      dish_four: "Dish 4",
+                      dish_five: "Dish 5",
+                    )
+                  ],
+                )
+              ],
+            ),
           ),
-          Column(
-            children: [
-              SizedBox(height: 60),
-              Text(
-                "Page 2",
-                style: GoogleFonts.poppins(fontSize: 40, color: Colors.black),
-              )
-            ],
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                const SizedBox(height: 60),
+                SingleChildScrollView(
+                  child: Column(children: [
+                    SizedBox(
+                      height: 20,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15)
+                        ),)
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                          height: 20,
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(9),)),
+                        ),
+                        const SizedBox(width: 10),
+                        SizedBox(
+                          height: 20,
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(9),))
+                        )
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    SizedBox(height: 20,
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(9),)))
+                  ]),
+                  )
+              ],
+            ),
           ),
           Column(children: [
-            SizedBox(height: 60),
+            const SizedBox(height: 60),
             Text(
               "Page 3",
               style: GoogleFonts.poppins(fontSize: 40, color: Colors.black),
@@ -182,16 +249,9 @@ class _HomeState extends State<Home> {
           backgroundColor: HexColor("#8cc092"),
           color: HexColor("#064635"),
           animationDuration: const Duration(milliseconds: 250),
-          onTap: (index) {
-            Pcontroller.animateToPage(index,
-                duration: const Duration(milliseconds: 200),
-                curve: Curves.easeIn);
-          },
-          items: [
+          items: const [
             Icon(Icons.home, color: Colors.white),
             Icon(Icons.public, color: Colors.white),
             Icon(Icons.person, color: Colors.white)
-          ]),
-    );
-  }
+          ]),);}
 }

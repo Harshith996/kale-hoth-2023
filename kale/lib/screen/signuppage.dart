@@ -37,11 +37,16 @@ class _SignUpPageState extends State<SignUpPage> {
   final PageController controller = PageController();
   String? gender = null;
 
-  int chosenHealthIndex = -1;
+  int chosenHealthIndex = -2;
   int chosenSustainabilityPlan = -2;
   int feet = 0;
   int inches = 0;
   int selectedGenderIndex = -1;
+
+  bool? isCheckedVegan = false;
+  bool? isCheckedGluten = false;
+  bool? isCheckedLactose = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -343,10 +348,10 @@ class _SignUpPageState extends State<SignUpPage> {
                                   GestureDetector(
                                       onTap: () {
                                         setState(() {
-                                          chosenHealthIndex = 0;
+                                          chosenHealthIndex = -1;
                                         });
                                       },
-                                      child: chosenHealthIndex != 0
+                                      child: chosenHealthIndex != -1
                                           ? SizedBox(
                                               height: 60,
                                               width: 60,
@@ -387,10 +392,10 @@ class _SignUpPageState extends State<SignUpPage> {
                                   GestureDetector(
                                       onTap: () {
                                         setState(() {
-                                          chosenHealthIndex = 1;
+                                          chosenHealthIndex = 0;
                                         });
                                       },
-                                      child: chosenHealthIndex != 1
+                                      child: chosenHealthIndex != 0
                                           ? SizedBox(
                                               height: 60,
                                               width: 60,
@@ -431,10 +436,10 @@ class _SignUpPageState extends State<SignUpPage> {
                                   GestureDetector(
                                       onTap: () {
                                         setState(() {
-                                          chosenHealthIndex = 2;
+                                          chosenHealthIndex = 1;
                                         });
                                       },
-                                      child: chosenHealthIndex != 2
+                                      child: chosenHealthIndex != 1
                                           ? SizedBox(
                                               height: 60,
                                               width: 60,
@@ -595,14 +600,17 @@ class _SignUpPageState extends State<SignUpPage> {
                               displayText: 'Get Your Meal Plan',
                               onTap: () {
                                 int height = (feet * 12) + (inches);
-                                recordUserPreferences(
-                                    1,
-                                    height,
-                                    weightController.text,
-                                    selectedGenderIndex,
-                                    chosenHealthIndex,
-                                    chosenSustainabilityPlan,
-                                    context);
+
+                                // recordUserPreferences(
+                                //     1,
+                                //     height,
+                                //     weightController.text,
+                                //     selectedGenderIndex,
+                                //     chosenHealthIndex,
+                                //     chosenSustainabilityPlan,
+                                //     context);
+                                controller.nextPage(
+          duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
                               },
                             )),
                       ],
@@ -611,6 +619,130 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
             ),
+            Container(
+              decoration: BoxDecoration(
+                color: HexColor('8cc092'),
+                borderRadius: const BorderRadius.all(Radius.circular(20)),
+                
+              ),
+              child: Scaffold(
+                backgroundColor: Colors.transparent,
+                body: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(30, 29, 30, 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                height: 60, 
+                                width: 161,
+                                child: Image.asset('assets/dark_logo_text.png')
+                              ),
+                            ],
+                          )
+                        ],
+                      )
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(30, 0, 20 ,20 ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Dietary Restrictions: ',
+                            style: GoogleFonts.poppins(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold
+
+                            ),
+                          ),
+                          SizedBox(height: 3),
+                          Text(
+                            'Tick all the boxes that apply to your diet',
+                            style: GoogleFonts.poppins(
+                              fontSize: 13.4,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Column(
+                            children:[
+                              Row(
+                                children: [
+                                  Checkbox(
+                                    value: isCheckedGluten,
+                                    activeColor: HexColor('064635'),
+                                    onChanged: (newBool) {  
+                                      setState(() {
+                                        isCheckedGluten= newBool;
+                                        }); 
+                                        }, ), 
+                                        Text(
+                                          'I am allergic to gluten.',
+                                          style: GoogleFonts.poppins(
+                                            fontSize: 15,
+                                          )),
+                                ],
+                              ),
+                              Row(children: [
+                                Checkbox(
+                                    value: isCheckedLactose,
+                                    activeColor: HexColor('064635'),
+                                    onChanged: (newBool) {  
+                                      setState(() {
+                                        isCheckedLactose= newBool;
+                                        }); 
+                                        }, ), 
+                                        Text(
+                                          'I am lactose-intolerant.',
+                                          style: GoogleFonts.poppins(
+                                            fontSize: 15,
+                                          )),
+
+                              ],),
+                              Row(children: [
+                                Checkbox(
+                                    value: isCheckedVegan,
+                                    activeColor: HexColor('064635'),
+                                    onChanged: (newBool) {  
+                                      setState(() {
+                                        isCheckedVegan= newBool;
+                                        }); 
+                                        }, ), 
+                                        Text(
+                                          'I am a vegan.',
+                                          
+                                    style: GoogleFonts.poppins(
+                                            fontSize: 15,
+                                          )),
+
+                              ],),
+
+                            SizedBox(
+                              height: 270
+                            ),
+
+                            WideDarkBackgroundButton(
+                              displayText: 'Get Your Meal Plan', 
+                            onTap: () { 
+
+                            }),
+                        
+
+                            ],
+                            
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                )
+              )
+              )
           ],
         ));
   }
