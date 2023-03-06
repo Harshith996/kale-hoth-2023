@@ -108,42 +108,47 @@
             $stmt->execute();
             return $stmt->get_result()->fetch_assoc();
         }
+        public function give_recommendations_breakfast($carbon_index, $calorie_intake, $gluten, $vegan, $dairy)
+        {
+            $up = $calorie_intake + 25;
+            $down = $calorie_intake - 25;
+            $query = "SELECT * FROM food_data WHERE carbonfp = ? AND calories BETWEEN ? AND ? AND meal_type in (1,4)
+            AND gluten = ? AND vegan = ? AND dairy = ?";
+            $stmt = $this->con->prepare($query);
+            $stmt->bind_param("iiiiii", $carbon_index, $up, $down, $gluten, $vegan, $dairy);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            return $result;
+
+        }
+
+        public function give_recommendations_lunch($carbon_index, $calorie_intake, $gluten, $vegan, $dairy)
+        {
+            $up = $calorie_intake + 25;
+            $down = $calorie_intake - 25;
+            $query = "SELECT * FROM food_data WHERE carbonfp = ? AND calories BETWEEN ? AND ? AND meal_type in (2,4,5) 
+            AND gluten = ? AND vegan = ? AND dairy = ?";
+            $stmt = $this->con->prepare($query);
+            $stmt->bind_param("iiiiii", $carbon_index, $up, $down, $gluten, $vegan, $dairy);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            return $result;
+
+        }
+
+        public function give_recommendations_dinner($carbon_index, $calorie_intake, $gluten, $vegan, $dairy)
+        {
+            $up = $calorie_intake + 25;
+            $down = $calorie_intake - 25;
+            $query = "SELECT * FROM food_data WHERE carbonfp = ? AND calories BETWEEN ? AND ? AND meal_type in (3,4,5)
+            AND gluten = ? AND vegan = ? AND dairy = ?";
+            $stmt = $this->con->prepare($query);
+            $stmt->bind_param("iiiiii", $carbon_index, $up, $down, $gluten, $vegan, $dairy);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            return $result;
+
+        }
     }
-
-    public function give_recommendations_breakfast($carbon_index, $health_index, $gluten, $vegan, $dairy)
-        {
-            $query = "SELECT * FROM food_data WHERE carbonfp = ? AND health = ? AND meal_type in (1,4)
-            AND gluten = ? AND vegan = ? AND dairy = ?";
-            $stmt = $this->con->prepare($query);
-            $stmt->bind_param("iiiii", $carbon_index, $health_index, $gluten, $vegan, $dairy);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            return $result;
-
-        }
-
-        public function give_recommendations_lunch($carbon_index, $health_index, $gluten, $vegan, $dairy)
-        {
-            $query = "SELECT * FROM food_data WHERE carbonfp = ? AND health = ? AND meal_type in (2,4,5) 
-            AND gluten = ? AND vegan = ? AND dairy = ?";
-            $stmt = $this->con->prepare($query);
-            $stmt->bind_param("iiiii", $carbon_index, $health_index, $gluten, $vegan, $dairy);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            return $result;
-
-        }
-
-        public function give_recommendations_dinner($carbon_index, $health_index, $gluten, $vegan, $dairy)
-        {
-            $query = "SELECT * FROM food_data WHERE carbonfp = ? AND health = ? AND meal_type in (3,4,5)
-            AND gluten = ? AND vegan = ? AND dairy = ?";
-            $stmt = $this->con->prepare($query);
-            $stmt->bind_param("iiiii", $carbon_index, $health_index, $gluten, $vegan, $dairy);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            return $result;
-
-        }
 
 ?>

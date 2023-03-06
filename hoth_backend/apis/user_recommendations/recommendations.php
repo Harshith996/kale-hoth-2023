@@ -10,9 +10,26 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         $db = new DbOperation();
 
         $pref = $db->get_user_preferences($_POST['user_id']);
-        $result1 = $db->give_recommendations_breakfast($pref['carbon_index'], $pref["health_index"], $pref['gluten'], $pref['vegan'], $pref['diary']);
-        $result2 = $db->give_recommendations_lunch($pref['carbon_index'], $pref["health_index"], $pref['gluten'], $pref['vegan'], $pref['diary']);
-        $result3 = $db->give_recommendations_dinner($pref['carbon_index'], $pref["health_index"], $pref['gluten'], $pref['vegan'], $pref['diary']);
+
+        if ($pref["sex"] == 0) {
+            $ideal_calorie_intake = 66 + 13.7 * $pref['weight'] * 0.453592 + 5 * $pref['height'] * 2.54 - 6.8 * 20;
+        }
+        else {
+            $ideal_calorie_intake = 655 + 9.6 * $pref['weight'] * 0.453592 + 1.8 * $pref['height'] * 2.54 - 4.7 * 20;
+        }
+        if ($pref['health_index'] == 0) {
+            $response["calorie_intake"] = $ideal_calorie_intake / 15;
+        }
+        else if ($pref['health_index'] == 1) {
+            $response["calorie_intake"] = ($ideal_calorie_intake + 400) / 15;
+        }
+        else {
+            $response["calorie_intake"] = ($ideal_calorie_intake - 400) / 15;
+        }
+
+        $result1 = $db->give_recommendations_breakfast($pref['carbon_index'], $pref["calorie_intake"], $pref['gluten'], $pref['vegan'], $pref['dairy']);
+        $result2 = $db->give_recommendations_lunch($pref['carbon_index'], $pref["calorie_intake"], $pref['gluten'], $pref['vegan'], $pref['dairy']);
+        $result3 = $db->give_recommendations_dinner($pref['carbon_index'], $pref["calorie_intake"], $pref['gluten'], $pref['vegan'], $pref['dairy']);
 
 
         if ($result1 == -1 or $result2 == -1 or $result3 == -1) {
